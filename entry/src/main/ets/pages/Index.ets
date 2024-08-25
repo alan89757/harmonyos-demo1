@@ -1,3 +1,5 @@
+import { Header } from "../components/Header"
+
 interface IItem {
   name: string, image: string, price: number, discount: number
 }
@@ -15,7 +17,6 @@ class Item {
     this.discount = discount;
   }
 }
-
 
 @Entry
 @Component
@@ -39,7 +40,7 @@ struct Index {
 
     RelativeContainer() {
       Column({space: 20}) {
-        Text('商品列表').fontSize(40).height(50)
+        Header({ title: '商品列表-21'})
         List({space: 10}) {
           ForEach(this.items, (item: IItem) => {
             ListItem() {
