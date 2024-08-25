@@ -18,6 +18,27 @@ class Item {
   }
 }
 
+// 全局函数
+@Builder function ItemCard (item: IItem) {
+  Row() {
+    Row({ space: 20}) {
+      Column() {
+        Image('https://assets.wangxiao.net/images/customer/customer.png').width(100).height(100)
+      }.height(100).justifyContent(FlexAlign.Center)
+      Column({space: 15}) {
+        Text(item.name)
+        Text(item.price.toFixed(0))
+        if(item.discount) {
+          Text(`折扣：${item.discount}`)
+        } else {
+          Text(`无折扣`)
+        }
+
+      }.justifyContent(FlexAlign.Center).width(200).alignItems(HorizontalAlign.Start)
+    }.width('90%').backgroundColor('green').alignItems(VerticalAlign.Center).height(120).justifyContent(FlexAlign.Center)
+  }.width('100%').justifyContent(FlexAlign.Center)
+}
+
 @Entry
 @Component
 struct Index {
@@ -44,23 +65,7 @@ struct Index {
         List({space: 10}) {
           ForEach(this.items, (item: IItem) => {
             ListItem() {
-              Row() {
-                Row({ space: 20}) {
-                  Column() {
-                    Image('https://assets.wangxiao.net/images/customer/customer.png').width(100).height(100)
-                  }.height(100).justifyContent(FlexAlign.Center)
-                  Column({space: 15}) {
-                    Text(item.name)
-                    Text(item.price.toFixed(0))
-                    if(item.discount) {
-                      Text(`折扣：${item.discount}`)
-                    } else {
-                      Text(`无折扣`)
-                    }
-
-                  }.justifyContent(FlexAlign.Center).width(200).alignItems(HorizontalAlign.Start)
-                }.width('90%').backgroundColor('green').alignItems(VerticalAlign.Center).height(120).justifyContent(FlexAlign.Center)
-              }.width('100%').justifyContent(FlexAlign.Center)
+              ItemCard(item)
             }
           })
         }.listDirection(Axis.Vertical)
