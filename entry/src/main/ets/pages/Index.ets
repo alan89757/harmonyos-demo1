@@ -19,6 +19,7 @@ class Item {
 }
 
 // 全局函数
+/*
 @Builder function ItemCard (item: IItem) {
   Row() {
     Row({ space: 20}) {
@@ -37,6 +38,16 @@ class Item {
       }.justifyContent(FlexAlign.Center).width(200).alignItems(HorizontalAlign.Start)
     }.width('90%').backgroundColor('green').alignItems(VerticalAlign.Center).height(120).justifyContent(FlexAlign.Center)
   }.width('100%').justifyContent(FlexAlign.Center)
+}
+*/
+
+// // 全局样式
+// @Styles function CommonStyle() {
+//   .width('100%').backgroundColor('#a34343')
+// }
+
+@Extend(Text) function CommonText() {
+  .fontSize(40).fontColor('#679809')
 }
 
 @Entry
@@ -57,20 +68,27 @@ struct Index {
     new Item('华为mate60-3',  'https://assets.wangxiao.net/images/customer/customer.png', 300, 0.6),
   ];
 
+
+  // 全局样式
+  @Styles CommonSomeStyle() {
+    .width('100%').backgroundColor('#123456')
+  }
   build() {
 
     RelativeContainer() {
       Column({space: 20}) {
-        Header({ title: '商品列表-21'})
+        Header({ title: '商品列表-212'})
+        Text('测试extend').CommonText();
         List({space: 10}) {
           ForEach(this.items, (item: IItem) => {
             ListItem() {
-              ItemCard(item)
+              this.ItemCard2(item)
             }
           })
         }.listDirection(Axis.Vertical)
       }.justifyContent(FlexAlign.Center).width('100%')
-    }.width('100%')
+    }.CommonSomeStyle()
+
 
 
       // Column({space: 10}){
@@ -139,4 +157,24 @@ struct Index {
     // .width('100%').backgroundColor('#fff')
   }
 
+  // 全局函数
+  @Builder ItemCard2(item: IItem) {
+    Row() {
+      Row({ space: 20}) {
+        Column() {
+          Image('https://assets.wangxiao.net/images/customer/customer.png').width(100).height(100)
+        }.height(100).justifyContent(FlexAlign.Center)
+        Column({space: 15}) {
+          Text(item.name)
+          Text(item.price.toFixed(0))
+          if(item.discount) {
+            Text(`折扣：${item.discount}`)
+          } else {
+            Text(`无折扣`)
+          }
+
+        }.justifyContent(FlexAlign.Center).width(200).alignItems(HorizontalAlign.Start)
+      }.width('90%').backgroundColor('green').alignItems(VerticalAlign.Center).height(120).justifyContent(FlexAlign.Center)
+    }.width('100%').justifyContent(FlexAlign.Center)
+  }
 }
