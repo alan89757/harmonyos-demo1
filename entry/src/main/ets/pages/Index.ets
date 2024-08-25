@@ -50,6 +50,18 @@ class Item {
   .fontSize(40).fontColor('#679809')
 }
 
+class Person {
+  public  name: string;
+  public age: number;
+  hobbies: Array<string>;
+
+  constructor(name: string, age: number, hobbies: Array<string>) {
+    this.name = name;
+    this.age = age;
+    this.hobbies = hobbies;
+  }
+}
+
 @Entry
 @Component
 struct Index {
@@ -68,13 +80,21 @@ struct Index {
     new Item('华为mate60-3',  'https://assets.wangxiao.net/images/customer/customer.png', 300, 0.6),
   ];
 
+  @State person: Person = new Person('Alan', 21, ['a', 'b', 'c']);
+
 
   // 全局样式
   @Styles CommonSomeStyle() {
     .width('100%').backgroundColor('#123456')
   }
   build() {
-
+    Text(`${this.person.name}: ${this.person.age} - ${this.person.hobbies.join(',')}`).onClick(()=> {
+      console.log('---111');
+      // this.person.age++;
+      const temp = this.person.hobbies;
+      this.person.hobbies = [...temp, 'd'];
+    })
+    /*
     RelativeContainer() {
       Column({space: 20}) {
         Header({ title: '商品列表-212'})
@@ -88,7 +108,7 @@ struct Index {
         }.listDirection(Axis.Vertical)
       }.justifyContent(FlexAlign.Center).width('100%')
     }.CommonSomeStyle()
-
+    */
 
 
       // Column({space: 10}){
@@ -157,7 +177,7 @@ struct Index {
     // .width('100%').backgroundColor('#fff')
   }
 
-  // 全局函数
+  // 局部函数
   @Builder ItemCard2(item: IItem) {
     Row() {
       Row({ space: 20}) {
