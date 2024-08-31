@@ -1,5 +1,7 @@
 import router from "@ohos.router"
 
+
+
 class RouterInfo {
   url: string;
   title: string;
@@ -13,10 +15,10 @@ class RouterInfo {
 @Component
 export struct Router {
   private routers: RouterInfo[] = [
-    new RouterInfo("pages/router/demo1", "demo1标题"),
-    new RouterInfo("pages/router/demo2", "demo2标题"),
-    new RouterInfo("pages/router/demo3", "demo3标题"),
-    new RouterInfo("pages/router/Demo5", "demo5标题")
+    new RouterInfo("pages/router/demo1", "demo1-1标题"),
+    new RouterInfo("router/demo2", "demo2-2标题"),
+    new RouterInfo("pages/router/demo3", "demo3-3标题"),
+    new RouterInfo("pages/router/Demo5", "demo5-5标题")
 
   ]
 

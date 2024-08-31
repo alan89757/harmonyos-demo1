@@ -15,6 +15,7 @@ class Task {
 @Entry
 @Component
 struct TaskCom {
+  @Provide hello: string = "hello world";
   @State total: number = 10;
   @State finish: number = 0;
   @State tasks: Task[] = [new Task('Alan', 23)]
@@ -22,7 +23,7 @@ struct TaskCom {
   build() {
     Column() {
       TaskProgress({ total: this.tasks.length, finish: this.finish });
-      TaskList({ tasks: this.tasks, finish: this.finish })
+      TaskList({ tasks: $tasks, finish: $finish })
     }
   }
 }
