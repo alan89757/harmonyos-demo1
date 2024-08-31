@@ -16,6 +16,7 @@ export struct Router {
     new RouterInfo("pages/router/demo1", "demo1标题"),
     new RouterInfo("pages/router/demo2", "demo2标题"),
     new RouterInfo("pages/router/demo3", "demo3标题"),
+    new RouterInfo("pages/IndexPage", "indexpage标题"),
     new RouterInfo("pages/router/Demo5", "demo5标题")
 
   ]
@@ -26,8 +27,12 @@ export struct Router {
       Text(r.title)
     }.onClick(()=> {
       console.log('000111--', r.url)
+
       router.pushUrl({
         url: r.url,
+        params: {
+          a: 1
+        }
       }, router.RouterMode.Single, err=> {
         if(err) {
           console.log('路由跳转失败---', err.code, err.message)
