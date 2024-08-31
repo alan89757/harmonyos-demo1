@@ -62,7 +62,7 @@ class Person {
   }
 }
 
-// @Entry
+@Entry
 @Component
 struct Index {
   @State message: string = 'Hello World 1000';

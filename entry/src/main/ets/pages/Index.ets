@@ -1,4 +1,12 @@
 import { Header } from "../components/Header"
+import React from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
+// import FastImage, {
+//   ResizeMode,
+//   OnLoadEvent,
+//   OnProgressEvent,
+// } from "react-native-fast-image";
+import FastImage from "@react-native-oh-tpl/react-native-fast-image"
 
 interface IItem {
   name: string, image: string, price: number, discount: number
