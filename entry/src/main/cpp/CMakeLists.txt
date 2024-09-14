@@ -14,6 +14,7 @@ set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
 
 add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/datetimepicker/src/main/cpp" ./datetimepicker)
+add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-safe-area-context/src/main/cpp" ./safe-area)
 #add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/async-storage/src/main/cpp" ./async-storage)
 
 add_library(rnoh_app SHARED
@@ -23,4 +24,5 @@ add_library(rnoh_app SHARED
 
 target_link_libraries(rnoh_app PUBLIC rnoh)
 target_link_libraries(rnoh_app PUBLIC rnoh_datetime_picker)
+target_link_libraries(rnoh_app PUBLIC rnoh_safe_area)
 #target_link_libraries(rnoh_app PUBLIC rnoh_async_storage)

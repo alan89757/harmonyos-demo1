@@ -9,6 +9,6 @@
   "dependencies": {
     "@rnoh/react-native-openharmony": "file:../libs/react_native_openharmony-5.0.0.500.har",
     "@react-native-oh-tpl/datetimepicker": "file:../library/datetimepicker.har",
-    "@react-native-oh-tpl/async-storage": "file:../library/async_storage.har",
+    "@react-native-oh-tpl/react-native-safe-area-context": "file:../library/safe_area.har",
   }
 }
