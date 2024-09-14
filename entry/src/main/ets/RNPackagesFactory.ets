@@ -1,5 +1,8 @@
 import { RNPackageContext, RNPackage } from '@rnoh/react-native-openharmony/ts';
+// import {AsyncStoragePackage} from '@react-native-oh-tpl/async-storage/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [];
+  return [
+    // new AsyncStoragePackage(ctx)
+  ];
 }

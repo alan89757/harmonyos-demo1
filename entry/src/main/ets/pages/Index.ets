@@ -10,10 +10,19 @@ import {
   TraceJSBundleProviderDecorator,
   RNOHCoreContext
 } from '@rnoh/react-native-openharmony';
+import { RNDateTimePicker, DATETIME_PICKER_VIEW_TYPE } from "@react-native-oh-tpl/datetimepicker"
 import { createRNPackages } from '../RNPackagesFactory';
 
 @Builder
-export function buildCustomRNComponent(ctx: ComponentBuilderContext) {}
+export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
+  if (ctx.componentName === DATETIME_PICKER_VIEW_TYPE) {
+    RNDateTimePicker({
+      ctx: ctx.rnComponentContext,
+      tag: ctx.tag,
+    })
+  }
+
+}
 
 const wrappedCustomRNComponentBuilder = wrapBuilder(buildCustomRNComponent)
 
@@ -52,7 +61,9 @@ struct Index {
             enableNDKTextMeasuring: true,
             enableBackgroundExecutor: false,
             enableCAPIArchitecture: true,
-            arkTsComponentNames: []
+            arkTsComponentNames: [
+              DATETIME_PICKER_VIEW_TYPE
+            ]
           },
           initialProps: { "foo": "bar" } as Record<string, string>,
           appKey: "AwesomeProject",
