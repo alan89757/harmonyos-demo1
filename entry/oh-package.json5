@@ -10,5 +10,6 @@
     "@rnoh/react-native-openharmony": "file:../libs/react_native_openharmony-5.0.0.500.har",
     "@react-native-oh-tpl/datetimepicker": "file:../library/datetimepicker.har",
     "@react-native-oh-tpl/react-native-safe-area-context": "file:../library/safe_area.har",
+    "@react-native-oh-tpl/react-native-webview": "file:../library/rn_webview.har"
   }
 }

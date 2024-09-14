@@ -11,6 +11,7 @@ import {
   RNOHCoreContext
 } from '@rnoh/react-native-openharmony';
 import { RNDateTimePicker, DATETIME_PICKER_VIEW_TYPE } from "@react-native-oh-tpl/datetimepicker"
+import { WebView, WEB_VIEW } from "@react-native-oh-tpl/react-native-webview"
 import { createRNPackages } from '../RNPackagesFactory';
 
 @Builder
@@ -19,6 +20,12 @@ export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
     RNDateTimePicker({
       ctx: ctx.rnComponentContext,
       tag: ctx.tag,
+    })
+  }
+  if (ctx.componentName === WEB_VIEW) {
+    WebView({
+      ctx: ctx.rnComponentContext,
+      tag: ctx.tag
     })
   }
 
@@ -62,7 +69,8 @@ struct Index {
             enableBackgroundExecutor: false,
             enableCAPIArchitecture: true,
             arkTsComponentNames: [
-              DATETIME_PICKER_VIEW_TYPE
+              DATETIME_PICKER_VIEW_TYPE,
+              WEB_VIEW
             ]
           },
           initialProps: { "foo": "bar" } as Record<string, string>,
