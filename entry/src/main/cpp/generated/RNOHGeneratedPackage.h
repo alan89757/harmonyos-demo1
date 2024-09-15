@@ -10,14 +10,20 @@
 
 #include "RNOH/Package.h"
 #include "RNOH/ArkTSTurboModule.h"
-#include "generated/RNCWebViewComponentDescriptor.h"
-#include "generated/RNCWebViewJSIBinder.h"
+#include "generated/RNGestureHandlerModule.h"
+#include "generated/RNGestureHandlerButtonComponentDescriptor.h"
+#include "generated/RNGestureHandlerRootViewComponentDescriptor.h"
+#include "generated/RNGestureHandlerButtonJSIBinder.h"
+#include "generated/RNGestureHandlerRootViewJSIBinder.h"
 
 namespace rnoh {
 
 class RNOHGeneratedPackageTurboModuleFactoryDelegate : public TurboModuleFactoryDelegate {
   public:
     SharedTurboModule createTurboModule(Context ctx, const std::string &name) const override {
+        if (name == "RNGestureHandlerModule") {
+            return std::make_shared<RNGestureHandlerModule>(ctx, name);
+        }
         return nullptr;
     };
 };
@@ -31,20 +37,6 @@ class GeneratedEventEmitRequestHandler : public EventEmitRequestHandler {
         }
 
         std::vector<std::string> supportedEventNames = {
-            "contentSizeChange",
-            "renderProcessGone",
-            "contentProcessDidTerminate",
-            "customMenuSelection",
-            "fileDownload",
-            "loadingError",
-            "loadingFinish",
-            "loadingProgress",
-            "loadingStart",
-            "httpError",
-            "message",
-            "openWindow",
-            "scroll",
-            "shouldStartLoadWithRequest",
         };
         if (std::find(supportedEventNames.begin(), supportedEventNames.end(), ctx.eventName) != supportedEventNames.end()) {
             eventEmitter->dispatchEvent(ctx.eventName, ArkJS(ctx.env).getDynamic(ctx.payload));
@@ -62,13 +54,15 @@ class RNOHGeneratedPackage : public Package {
 
     std::vector<facebook::react::ComponentDescriptorProvider> createComponentDescriptorProviders() override {
         return {
-            facebook::react::concreteComponentDescriptorProvider<facebook::react::RNCWebViewComponentDescriptor>(),
+            facebook::react::concreteComponentDescriptorProvider<facebook::react::RNGestureHandlerButtonComponentDescriptor>(),
+            facebook::react::concreteComponentDescriptorProvider<facebook::react::RNGestureHandlerRootViewComponentDescriptor>(),
         };
     }
 
     ComponentJSIBinderByString createComponentJSIBinderByName() override {
         return {
-            {"RNCWebView", std::make_shared<RNCWebViewJSIBinder>()},
+            {"RNGestureHandlerButton", std::make_shared<RNGestureHandlerButtonJSIBinder>()},
+            {"RNGestureHandlerRootView", std::make_shared<RNGestureHandlerRootViewJSIBinder>()},
         };
     };
 
