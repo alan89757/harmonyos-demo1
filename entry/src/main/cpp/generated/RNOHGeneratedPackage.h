@@ -10,28 +10,12 @@
 
 #include "RNOH/Package.h"
 #include "RNOH/ArkTSTurboModule.h"
-#include "generated/RNDeviceInfo.h"
-#include "generated/RNGestureHandlerModule.h"
-#include "generated/ReactNativeOrientation.h"
-#include "generated/RNGestureHandlerButtonComponentDescriptor.h"
-#include "generated/RNGestureHandlerRootViewComponentDescriptor.h"
-#include "generated/RNGestureHandlerButtonJSIBinder.h"
-#include "generated/RNGestureHandlerRootViewJSIBinder.h"
 
 namespace rnoh {
 
 class RNOHGeneratedPackageTurboModuleFactoryDelegate : public TurboModuleFactoryDelegate {
   public:
     SharedTurboModule createTurboModule(Context ctx, const std::string &name) const override {
-        if (name == "RNDeviceInfo") {
-            return std::make_shared<RNDeviceInfo>(ctx, name);
-        }
-        if (name == "RNGestureHandlerModule") {
-            return std::make_shared<RNGestureHandlerModule>(ctx, name);
-        }
-        if (name == "ReactNativeOrientation") {
-            return std::make_shared<ReactNativeOrientation>(ctx, name);
-        }
         return nullptr;
     };
 };
@@ -62,15 +46,11 @@ class RNOHGeneratedPackage : public Package {
 
     std::vector<facebook::react::ComponentDescriptorProvider> createComponentDescriptorProviders() override {
         return {
-            facebook::react::concreteComponentDescriptorProvider<facebook::react::RNGestureHandlerButtonComponentDescriptor>(),
-            facebook::react::concreteComponentDescriptorProvider<facebook::react::RNGestureHandlerRootViewComponentDescriptor>(),
         };
     }
 
     ComponentJSIBinderByString createComponentJSIBinderByName() override {
         return {
-            {"RNGestureHandlerButton", std::make_shared<RNGestureHandlerButtonJSIBinder>()},
-            {"RNGestureHandlerRootView", std::make_shared<RNGestureHandlerRootViewJSIBinder>()},
         };
     };
 

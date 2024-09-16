@@ -12,3 +12,6 @@
 /.appanalyzer
 /libs/*
 *.log
+/entry/oh_modules
+/entry/src/main/resources/rawfile
+/entry/src/main/cpp
