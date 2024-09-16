@@ -3,7 +3,9 @@ import { RNPackageContext, RNPackage } from '@rnoh/react-native-openharmony/ts';
 import {SafeAreaViewPackage} from '@react-native-oh-tpl/react-native-safe-area-context/ts';
 // import { WebViewPackage } from '@react-native-oh-tpl/react-native-webview/ts';
 // import {RNDeviceInfoPackage} from '@react-native-oh-tpl/react-native-device-info/ts';
-import { RNOrientationPackage } from '@react-native-oh-tpl/rnoh-orientation/ts';
+import { RNOrientationPackage } from '@react-native-oh-tpl/react-native-orientation/ts';
+// import { ReanimatedPackage } from '@react-native-oh-tpl/react-native-reanimated/ts';
+// import {SplashScreenPackage} from '@react-native-oh-tpl/react-native-splash-screen/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -11,6 +13,8 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
     new SafeAreaViewPackage(ctx),
     // new RNDeviceInfoPackage(ctx)
     // new WebViewPackage(ctx)
-    new RNOrientationPackage(ctx)
+    new RNOrientationPackage(ctx),
+    // new SplashScreenPackage(ctx),
+    // new ReanimatedPackage(ctx),
   ];
 }

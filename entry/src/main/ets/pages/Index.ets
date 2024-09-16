@@ -11,6 +11,7 @@ import {
   RNOHCoreContext
 } from '@rnoh/react-native-openharmony';
 import { RNDateTimePicker, DATETIME_PICKER_VIEW_TYPE } from "@react-native-oh-tpl/datetimepicker"
+import { RTNPdfView, PDF_VIEW_TYPE } from '@react-native-oh-tpl/react-native-pdf';
 // import { WebView, WEB_VIEW } from "@react-native-oh-tpl/react-native-webview"
 import { createRNPackages } from '../RNPackagesFactory';
 
@@ -18,6 +19,12 @@ import { createRNPackages } from '../RNPackagesFactory';
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
   if (ctx.componentName === DATETIME_PICKER_VIEW_TYPE) {
     RNDateTimePicker({
+      ctx: ctx.rnComponentContext,
+      tag: ctx.tag,
+    })
+  }
+  if (ctx.componentName === PDF_VIEW_TYPE) {
+    RTNPdfView({
       ctx: ctx.rnComponentContext,
       tag: ctx.tag,
     })
@@ -70,7 +77,8 @@ struct Index {
             enableCAPIArchitecture: true,
             arkTsComponentNames: [
               DATETIME_PICKER_VIEW_TYPE,
-              // WEB_VIEW
+              PDF_VIEW_TYPE,
+            // WEB_VIEW
             ]
           },
           initialProps: { "foo": "bar" } as Record<string, string>,
