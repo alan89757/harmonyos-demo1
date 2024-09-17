@@ -9,6 +9,10 @@
       "value": "description"
     },
     {
+      "name": "READ_WRITE_DOWNLOAD_DIRECTORY_desc",
+      "value": "description"
+    },
+    {
       "name": "image_width",
       "value": "图库宽度2："
     },

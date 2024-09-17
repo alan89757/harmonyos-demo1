@@ -8,6 +8,24 @@
         "name": "ohos.permission.GET_NETWORK_INFO"
       },
       {
+        "name": "ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY",
+        "reason": "$string:READ_WRITE_DOWNLOAD_DIRECTORY_desc",
+        "usedScene": {
+          "abilities": [
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY",
+        "reason": "$string:READ_WRITE_DOWNLOAD_DIRECTORY_desc",
+        "usedScene": {
+          "abilities": [
+          ],
+          "when": "inuse"
+        }
+      },
+      {
         "name": "ohos.permission.GET_WIFI_INFO"
       }
     ],
